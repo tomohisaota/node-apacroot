@@ -5,6 +5,10 @@ apacroot = require("../lib/apacroot")
 # Official Spec
 # http://docs.amazonwebservices.com/AWSECommerceService/latest/DG/BrowseNodeIDs.html
 
+describe "version", ->
+  it "is 2011-08-01", ->
+    chai.expect(apacroot.version()).to.equal("2011-08-01")
+
 describe "regions", ->
   it "has all regions", ->
     chai.expect(apacroot.regions()).to.deep.equal([ 'CA', 'CN', 'DE', 'ES', 'FR', 'IT', 'JP', 'UK', 'US' ])

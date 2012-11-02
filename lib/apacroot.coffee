@@ -64,7 +64,10 @@ for line in lines
   for index,code of items
     continue if(code == " ")
     nodes[[regions[index]]][key] = parseInt(code)
-    
+
+exports.version =->
+  return "2011-08-01"
+
 exports.regions =->
   return Object.keys(nodes)
 
