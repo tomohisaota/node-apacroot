@@ -65,11 +65,27 @@ for line in lines
     continue if(code == " ")
     nodes[[regions[index]]][key] = parseInt(code)
 
+#http://docs.amazonwebservices.com/AWSECommerceService/latest/DG/AnatomyOfaRESTRequest.html
+#But it seems that some of endpoints does not work
+endpoints = {}
+endpoints["CA"] = "ecs.amazonaws.ca"
+endpoints["CN"] = "webservices.amazon.cn"
+endpoints["DE"] = "ecs.amazonaws.de"
+endpoints["ES"] = "webservices.amazon.es"
+endpoints["FR"] = "ecs.amazonaws.fr"
+endpoints["IT"] = "webservices.amazon.it"
+endpoints["JP"] = "ecs.amazonaws.jp"
+endpoints["UK"] = "ecs.amazonaws.co.uk"
+endpoints["US"] = "ecs.amazonaws.com"
+
 exports.version =->
   return "2011-08-01"
 
 exports.regions =->
   return Object.keys(nodes)
+  
+exports.endpoint = (region)->
+  return endpoints[region]
 
 exports.categories = (region)->
   return Object.keys(nodes[region])
