@@ -53,17 +53,17 @@ WirelessAccessories	 	 	 	 	 	 	 	 	13900851
 '''
 
 lines = data.split(/\n/)
-regions = lines.shift().split(/\t/)
+locales = lines.shift().split(/\t/)
 nodes = {}
-for region in regions
-  nodes[region] = {}
+for locale in locales
+  nodes[locale] = {}
 
 for line in lines
   items = line.split(/\t/)
   key = items.shift(items)
   for index,code of items
     continue if(code == " ")
-    nodes[[regions[index]]][key] = parseInt(code)
+    nodes[[locales[index]]][key] = parseInt(code)
 
 #http://docs.amazonwebservices.com/AWSECommerceService/latest/DG/AnatomyOfaRESTRequest.html
 #But it seems that some of endpoints does not work
@@ -81,14 +81,18 @@ endpoints["US"] = "ecs.amazonaws.com"
 exports.version =->
   return "2011-08-01"
 
+# Deprecated
 exports.regions =->
   return Object.keys(nodes)
-  
-exports.endpoint = (region)->
-  return endpoints[region]
 
-exports.categories = (region)->
-  return Object.keys(nodes[region])
+exports.locales =->
+  return Object.keys(nodes)
   
-exports.rootnode = (region,category)->
-  return nodes[region][category]
+exports.endpoint = (locale)->
+  return endpoints[locale]
+
+exports.categories = (locale)->
+  return Object.keys(nodes[locale])
+  
+exports.rootnode = (locale,category)->
+  return nodes[locale][category]

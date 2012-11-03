@@ -9,18 +9,22 @@ describe "version", ->
   it "is 2011-08-01", ->
     chai.expect(apacroot.version()).to.equal("2011-08-01")
 
-describe "regions", ->
-  it "has all regions", ->
-    chai.expect(apacroot.regions()).to.deep.equal([ 'CA', 'CN', 'DE', 'ES', 'FR', 'IT', 'JP', 'UK', 'US' ])
+describe "endpoints", ->
+  it "JP", ->
+    chai.expect(apacroot.endpoint("JP")).to.equal("ecs.amazonaws.jp")
+
+describe "locales", ->
+  it "has all locales", ->
+    chai.expect(apacroot.locales()).to.deep.equal([ 'CA', 'CN', 'DE', 'ES', 'FR', 'IT', 'JP', 'UK', 'US' ])
 
 describe "categories", ->
   it "CA", ->
-    region = "CA"
-    chai.expect(apacroot.categories(region)).not.include("Automotive")
-    chai.expect(apacroot.categories(region)).to.include("Baby")
+    locale = "CA"
+    chai.expect(apacroot.categories(locale)).not.include("Automotive")
+    chai.expect(apacroot.categories(locale)).to.include("Baby")
 
 describe "rootnode", ->
-  it "region JP for all categories", ->
+  it "locale JP for all categories", ->
     chai.expect(apacroot.rootnode("JP",'Apparel')).equals(361299011)
     chai.expect(apacroot.rootnode("JP",'Appliances')).equals(2277724051)
     chai.expect(apacroot.rootnode("JP","ArtsAndCrafts")).to.be.an('undefined');
@@ -71,7 +75,7 @@ describe "rootnode", ->
     chai.expect(apacroot.rootnode("JP","Wireless")).to.be.an('undefined');
     chai.expect(apacroot.rootnode("JP","WirelessAccessories")).to.be.an('undefined');
 
-  it "category Jewelry for all regions", ->
+  it "category Jewelry for all locales", ->
     chai.expect(apacroot.rootnode("CA","Jewelry")).to.be.an('undefined');
     chai.expect(apacroot.rootnode("CN","Jewelry")).to.equals(816482051)
     chai.expect(apacroot.rootnode("DE","Jewelry")).to.equals(327473011)
