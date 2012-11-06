@@ -116,7 +116,7 @@ exports.rootnode = (locale,category)->
 
     #13331821 seems to be a broken node
     if(category == "Hobbies")
-      return 13299551
+      return 2277722051
     if(category == "Toys")
       return 13299551
     if(category == "Baby")
