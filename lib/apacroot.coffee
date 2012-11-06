@@ -78,6 +78,17 @@ endpoints["JP"] = "ecs.amazonaws.jp"
 endpoints["UK"] = "ecs.amazonaws.co.uk"
 endpoints["US"] = "ecs.amazonaws.com"
 
+countries = {}
+countries["CA"] = "Canada"
+countries["CN"] = "China"
+countries["DE"] = "Germany"
+countries["ES"] = "Spain"
+countries["FR"] = "France"
+countries["IT"] = "Italy"
+countries["JP"] = "Japan"
+countries["UK"] = "United Kingdom"
+countries["US"] = "United States"
+
 exports.version =->
   return "2011-08-01"
 
@@ -90,6 +101,9 @@ exports.locales =->
   
 exports.endpoint = (locale)->
   return endpoints[locale]
+  
+exports.country = (locale)->
+  return countries[locale]
 
 exports.categories = (locale)->
   return Object.keys(nodes[locale])

@@ -3,12 +3,13 @@
   "description" : "List of top level BrowseNode of Amazon Product Advertising API",
   "author" : "Tomohisa Ota<tomohisa.ota@gmail.com>",
   "main" : "lib/apacroot.coffee",
-  "version" : "0.0.6",
+  "version" : "0.0.7",
   "dependencies" : {
     "coffee-script" : "*"
   },
   "devDependencies" : {
     "mocha" : "*",
+    "should" : "*",
     "chai" : "*"
   }
 }
