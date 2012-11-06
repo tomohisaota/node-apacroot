@@ -114,7 +114,7 @@ exports.rootnode = (locale,category)->
     if(category == "SportingGoods")
       return 14315361
 
-    #13331821 is brolen node
+    #13331821 seems to be a broken node
     if(category == "Hobbies")
       return 13299551
     if(category == "Toys")
