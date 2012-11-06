@@ -95,4 +95,33 @@ exports.categories = (locale)->
   return Object.keys(nodes[locale])
   
 exports.rootnode = (locale,category)->
+  if(locale == "JP")
+    # move category top 1 level lower
+    if(category == "Apparel")
+      return 361245011
+    if(category == "Watches")
+      return 331952011
+    if(category == "Appliances")
+      return 2277725051
+    if(category == "Automotive")
+      return 2017305051
+    if(category == "Grocery")
+      return 57240051
+    if(category == "MusicalInstruments")
+      return 2123630051
+    if(category == "Shoes")
+      return 2016927051
+    if(category == "SportingGoods")
+      return 14315361
+
+    #13331821 is brolen node
+    if(category == "Hobbies")
+      return 13299551
+    if(category == "Toys")
+      return 13299551
+    if(category == "Baby")
+      return 2189078051
+  return nodes[locale][category]
+  
+exports.rootnodeOriginal = (locale,category)->
   return nodes[locale][category]
